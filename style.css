@@ -11,12 +11,10 @@ label {
 	margin: 10px;
 }
 .colOne {
-	background-color:khaki;
+	background-color:rgb(202, 240, 140);
 	
 }
-.colTwo {
-	background-color: rgb(255, 255, 255);
-}
+
 .histBtnRow {
 	margin-top: 5px;
 	margin-bottom: 5px;
