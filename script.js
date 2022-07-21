@@ -109,3 +109,77 @@ function getWeatherToday() {
 	});
 	getFiveDayForecast();
 };
+var fivedays = $('.fiveForecast');
+
+function getFiveDayForecast() {
+	var groupfarting = `https://api.openweathermap.org/data/2.5/forecast?q=${maincity}&units=imperial&appid=${authorizationthingy}`;
+//group afrting starts at 9
+	$.ajax({
+		url: groupfarting,
+		method: 'GET',
+	}).then(function (response) {
+		var fiveDayArray = response.list;
+		var myWeather = [];
+		$.each(fiveDayArray, function (index, value) {
+			testObj = {
+				date: value.dt_txt.split(' ')[0],
+				time: value.dt_txt.split(' ')[1],
+				temp: value.main.temp,
+				feels_like: value.main.feels_like,
+				icon: value.weather[0].icon,
+				humidity: value.main.humidity
+			}
+
+			if (value.dt_txt.split(' ')[1] === "12:00:00") {
+				myWeather.push(testObj);
+			}
+		})
+		//puts cards on the screen fr
+		for (let i = 0; i < myWeather.length; i++) {
+
+			var cardfunny = $('<div>');
+			cardfunny.attr('class', 'card text-white bg-primary mb-3 cardOne');
+			cardfunny.attr('style', 'max-width: 200px;');
+			fivedays.append(cardfunny);
+//play skyrim
+			var headerfunny = $('<div>');
+			headerfunny.attr('class', 'card-header')
+			var mainfunny = moment(`${myWeather[i].date}`).format('MM-DD-YYYY');
+			headerfunny.text(mainfunny);
+			cardfunny.append(headerfunny)
+//headaches
+			var bodyfuny = $('<div>');
+			bodyfuny.attr('class', 'card-body');
+			cardfunny.append(bodyfuny);
+
+			var iconfunny = $('<img>');
+			iconfunny.attr('class', 'icons');
+			iconfunny.attr('src', `https://openweathermap.org/img/wn/${myWeather[i].icon}@2x.png`);
+			bodyfuny.append(iconfunny);
+
+			//what it is
+			var tempfunny = $('<p>').text(`Temperature: ${myWeather[i].temp} °F`);
+			bodyfuny.append(tempfunny);
+			//whjat it de facto is aka feels
+			var feelingsfr = $('<p>').text(`Feels Like: ${myWeather[i].feels_like} °F`);
+			bodyfuny.append(feelingsfr);
+			//water is in the air
+			var humidityfunny = $('<p>').text(`Humidity: ${myWeather[i].humidity} %`);
+			bodyfuny.append(humidityfunny);
+		}
+	});
+};
+
+//loads data foir the worst city in the usa nashvill-e
+function initLoad() {
+
+	var citytimehistory = JSON.parse(localStorage.getItem('maincity'));
+
+	if (citytimehistory !== null) {
+		cityHist = citytimehistory
+	}
+	getHistory();
+	getWeatherToday();
+};
+
+initLoad();
