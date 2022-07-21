@@ -1,1 +1,45 @@
-
+h1 {
+	background-color: rgb(255, 255, 255);
+	text-align: center;
+}
+label {
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 20px;
+}
+.card {
+	margin: 10px;
+}
+.colOne {
+	background-color:khaki;
+	
+}
+.colTwo {
+	background-color: rgb(255, 255, 255);
+}
+.histBtnRow {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.green{
+  background-color: rgb(152, 255, 152);
+}
+.yellow{
+  background-color: rgb(150, 150, 4);
+}
+.orange{
+  background-color: rgb(255, 211, 130);
+}
+.red{
+  background-color: red;
+}
+.purple{
+  background-color: purple;
+}
+.icons {
+	height: 70px;
+	width: 70px;
+}
+.cardTodayDate {
+	font-size: 20px;
+}
