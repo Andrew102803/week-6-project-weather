@@ -48,6 +48,7 @@ function getHistory() {
 		getWeatherToday();
 	});
 };
+
 //Today weather list thng selctoert 
 var cardTodayBody = $('.cardBodyToday')
 //launches the 5 day planner weather thing
@@ -109,6 +110,7 @@ function getWeatherToday() {
 	});
 	getFiveDayForecast();
 };
+
 var fivedays = $('.fiveForecast');
 
 function getFiveDayForecast() {
